@@ -11,8 +11,8 @@ import { currentUser } from "@clerk/nextjs/server";
 import { ClerkLoaded } from "@clerk/nextjs";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 
-const Header = async () => {
-  const user = await currentUser();
+  const Header = async () => {
+    const user = await currentUser();
 
   return (
     <header className="bg-white py-5 border-b">
