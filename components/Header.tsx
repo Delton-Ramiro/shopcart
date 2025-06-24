@@ -11,11 +11,11 @@ import { currentUser } from "@clerk/nextjs/server";
 import { ClerkLoaded } from "@clerk/nextjs";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 
-  const Header = async () => {
-    const user = await currentUser();
+const Header = async () => {
+  const user = await currentUser();
 
   return (
-    <header className="bg-white py-5 border-b">
+    <header className="bg-white/70 py-5 border-b sticky top-0 z-50 backdrop-blur-md">
       <Container className="flex items-center justify-between text-lightColor ">
         <div className="w-auto md:w-1/3 flex items-center gap-2.5 justify-start md:gap-0">
           <MobileMenu />
