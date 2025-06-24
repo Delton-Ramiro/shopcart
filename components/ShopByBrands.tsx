@@ -32,7 +32,7 @@ const extraData = [
 const ShopByBrands = async () => {
   const brands = await getAllBrands();
   return (
-    <div className="mb-10 lg:pb-20 bg-shop_light_bg p-5 lg:p-7 rounded-md">
+    <div className="mb-10 lg:mb-20 bg-shop_light_bg p-5 lg:p-7 rounded-md">
       <Title>Shop by brands</Title>
       <Link
         href={"/shop"}
@@ -43,7 +43,7 @@ const ShopByBrands = async () => {
       <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-2.5">
         {brands?.map((brand) => (
           <Link
-            key={brand?.slug?.current}
+            key={brand?._id}
             href={`/brand/${brand?.slug?.current}`}
             className="bg-white w-34 h-24 flex items-center justify-center rounded-md overflow-hidden hover:shadow-lg shadow-shop_dark_green/20 hoverEffect "
           >
