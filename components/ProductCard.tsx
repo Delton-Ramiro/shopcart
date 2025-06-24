@@ -15,14 +15,16 @@ export const ProductCard = ({ product }: { product: Product }) => {
       <div className="relative group overflow-hidden bg-shop_light_bg">
         <AddToWishlistButton product={product} />
         {product?.images && (
-          <Image
-            src={urlFor(product?.images?.[0]).url()}
-            alt="Product Image"
-            loading="lazy"
-            width={700}
-            height={700}
-            className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop_light_bg hoverEffect ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
-          />
+          <Link href={`/product/${product?.slug?.current}`}>
+            <Image
+              src={urlFor(product?.images?.[0]).url()}
+              alt="Product Image"
+              loading="lazy"
+              width={700}
+              height={700}
+              className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop_light_bg hoverEffect ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
+            />
+          </Link>
         )}
         {product?.status === "sale" && (
           <p className="absolute top-2 left-2 z-10 text-xs border border-darkColor/50 px-2 rounded-full group-hover:border-shop_light_green group-hover:text-shop_light_green hoverEffect">
