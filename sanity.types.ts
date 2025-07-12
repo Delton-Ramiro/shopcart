@@ -312,6 +312,7 @@ export type Category = {
   title?: string;
   slug?: Slug;
   description?: string;
+  productCount?: number;
   range?: number;
   featured?: boolean;
   image?: {
