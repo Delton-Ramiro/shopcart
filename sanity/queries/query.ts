@@ -22,3 +22,8 @@ export const DEAL_PRODUCTS = defineQuery(
 export const PRODUCT_BY_SLUG_QUERY = defineQuery(
   `*[_type == "product" && slug.current == $slug] | order(name asc) [0]`
 );
+
+export const BRAND_QUERY =
+  defineQuery(`*[_type == "product" && slug.current == $slug]{
+  "brandName": brand->title
+  }`);

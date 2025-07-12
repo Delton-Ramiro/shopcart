@@ -6,11 +6,12 @@ import { ShoppingBagIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  product: Product;
+  product: Product | null | undefined;
   className?: string;
 }
 export const AddToCartButton = ({ product, className }: Props) => {
   const isOutOfStock = product?.stock === 0;
+
   const handleAddToCart = () => {
     alert("Product added to cart");
   };
