@@ -6,7 +6,7 @@ import { Heart } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const AddToWishlistButton = ({
+const ProductSideMenu = ({
   product,
   className,
 }: {
@@ -48,4 +48,4 @@ const AddToWishlistButton = ({
   );
 };
 
-export default AddToWishlistButton;
+export default ProductSideMenu;

@@ -1,3 +1,5 @@
+import "./globals.css";
+import { Toaster } from "react-hot-toast";
 const RootLayout = ({
   children,
 }: Readonly<{
@@ -6,6 +8,12 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className={`font-poppins antialiased`}>{children}</body>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: { background: "#000000", color: "#fff" },
+        }}
+      />
     </html>
   );
 };

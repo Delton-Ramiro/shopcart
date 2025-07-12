@@ -4,16 +4,17 @@ import { Flame, StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { AddToWishlistButton } from "./AddToWishlistButton";
+
 import { Title } from "./ui/text";
 import { PriceView } from "./PriceView";
 import { AddToCartButton } from "./AddToCartButton";
+import ProductSideMenu from "./ProductSideMenu";
+import AddToWishlistButton from "./AddToWishlistButton";
 
 export const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div className="text-sm border border-dark_blue/20 rounded-md bg-white group">
       <div className="relative group overflow-hidden bg-shop_light_bg">
-        <AddToWishlistButton product={product} />
         {product?.images && (
           <Link href={`/product/${product?.slug?.current}`}>
             <Image
@@ -26,6 +27,8 @@ export const ProductCard = ({ product }: { product: Product }) => {
             />
           </Link>
         )}
+        <AddToWishlistButton product={product} />
+        {/*   <ProductSideMenu product={product} /> */}
         {product?.status === "sale" && (
           <p className="absolute top-2 left-2 z-10 text-xs border border-darkColor/50 px-2 rounded-full group-hover:border-shop_light_green group-hover:text-shop_light_green hoverEffect">
             Sale!
