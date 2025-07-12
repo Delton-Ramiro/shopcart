@@ -8,7 +8,6 @@ import { getCategories } from "@/sanity/queries";
 
 const Home = async () => {
   const categories = await getCategories(6);
-  console.log(categories);
   return (
     <Container>
       <HomeBanner />

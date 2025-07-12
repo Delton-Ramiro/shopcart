@@ -32,7 +32,7 @@ const CategoryProducts = ({ categories, slug }: Props) => {
         ...,"categories": categories[]->title}
       `;
       const data = await client.fetch(query, { categorySlug });
-      console.log("Fetched products for category:", categorySlug, data);
+
       setProducts(data);
     } catch (error) {
       console.error("Error fetching products for category:", error);
