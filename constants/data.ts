@@ -29,3 +29,9 @@ export const productType = [
   { title: "Refrigerators", value: "refrigerators" },
   { title: "Others", value: "others" },
 ];
+
+export const productTabs = [
+  { key: "description", label: "Description" },
+  { key: "additional", label: "Additional Information" },
+  { key: "reviews", label: "Reviews" },
+];
