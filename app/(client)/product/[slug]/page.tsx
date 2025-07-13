@@ -14,6 +14,7 @@ import React from "react";
 import { ProductTabProvider } from "@/components/ProductTabContext";
 import ProductTabs from "@/components/ProductTabs";
 import ProductTabContent from "@/components/ProductTabContent";
+import { notFound } from "next/navigation";
 
 const SingleProductPage = async ({
   params,
@@ -22,6 +23,9 @@ const SingleProductPage = async ({
 }) => {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
+  if (!product) {
+    return notFound();
+  }
   return (
     <>
       <Container>
