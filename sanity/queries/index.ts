@@ -1,6 +1,7 @@
 import { sanityFetch } from "../lib/live";
 import {
   BLOG_CATEGORIES,
+  BLOG_POSTS_CATEGORIES,
   BRAND_QUERY,
   BRANDS_QUERY,
   DEAL_PRODUCTS,
@@ -142,6 +143,18 @@ export const getBlogCategories = async () => {
     return data ?? [];
   } catch (error) {
     console.log("Error fetching blog categoried:", error);
+    return [];
+  }
+};
+
+export const getBlogPostsPerCetegoryCount = async () => {
+  try {
+    const { data } = await sanityFetch({
+      query: BLOG_POSTS_CATEGORIES,
+    });
+    return data ?? [];
+  } catch (error) {
+    console.log("Error fetching count of blog posts per category:", error);
     return [];
   }
 };

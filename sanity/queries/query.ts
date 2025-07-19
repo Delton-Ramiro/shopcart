@@ -66,6 +66,14 @@ export const BLOG_CATEGORIES = defineQuery(
   }`
 );
 
+export const BLOG_POSTS_CATEGORIES = defineQuery(
+  `*[_type == "blogcategory"]{
+  title,
+  "count": count(*[_type == "blog" && references(^._id)])
+}
+`
+);
+
 export const OTHERS_BLOG_QUERY = defineQuery(`*[
   _type == "blog"
   && defined(slug.current)

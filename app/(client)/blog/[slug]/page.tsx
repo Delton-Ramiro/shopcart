@@ -5,6 +5,7 @@ import { SINGLE_BLOG_QUERYResult } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 import {
   getBlogCategories,
+  getBlogPostsPerCetegoryCount,
   getOthersBlog,
   getSingleBlog,
 } from "@/sanity/queries";
@@ -193,21 +194,21 @@ const SingleBlogPage = async ({
 };
 
 const BlogLeft = async ({ slug }: { slug: string }) => {
-  const categories = await getBlogCategories();
   const blogs = await getOthersBlog(slug, 5);
+  const blogPostsPerCategory = await getBlogPostsPerCetegoryCount();
 
   return (
     <div>
       <div className="border border-lightColor p-5 rounded-md">
         <Title className="text-base">Blog Categories</Title>
         <div className="space-y-2 mt-2">
-          {categories?.map(({ blogcategories }, index) => (
+          {blogPostsPerCategory?.map(({ title, count }, index) => (
             <div
               key={index}
               className="text-lightColor flex items-center justify-between text-sm font-medium"
             >
-              <p>{blogcategories[0]?.title}</p>
-              <p className="text-darkColor font-semibold">{`(1)`}</p>
+              <p>{title}</p>
+              <p className="text-darkColor font-semibold">{`(${count})`}</p>
             </div>
           ))}
         </div>
