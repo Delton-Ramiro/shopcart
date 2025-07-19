@@ -851,6 +851,12 @@ export type BLOG_CATEGORIESResult = Array<{
     description?: string;
   }> | null;
 }>;
+// Variable: BLOG_POSTS_CATEGORIES
+// Query: *[_type == "blogcategory"]{  title,  "count": count(*[_type == "blog" && references(^._id)])}
+export type BLOG_POSTS_CATEGORIESResult = Array<{
+  title: string | null;
+  count: number;
+}>;
 // Variable: OTHERS_BLOG_QUERY
 // Query: *[  _type == "blog"  && defined(slug.current)  && slug.current != $slug]|order(publishedAt desc)[0...$quantity]{...  publishedAt,  title,  mainImage,  slug,  author->{    name,    image,  },  categories[]->{    title,    "slug": slug.current,  }}
 export type OTHERS_BLOG_QUERYResult = Array<{
@@ -899,6 +905,7 @@ declare module "@sanity/client" {
     "*[_type == 'blog'] | order(publishedAt desc)[0...$quantity]{\n  ...,  \n     blogcategories[]->{\n    title\n}\n    }\n  ": GET_ALL_BLOGResult;
     "*[_type == \"blog\" && slug.current == $slug][0]{\n  ..., \n    author->{\n    name,\n    image,\n  },\n  blogcategories[]->{\n    title,\n    \"slug\": slug.current,\n  },\n}": SINGLE_BLOG_QUERYResult;
     "*[_type == \"blog\"]{\n     blogcategories[]->{\n    ...\n    }\n  }": BLOG_CATEGORIESResult;
+    "*[_type == \"blogcategory\"]{\n  title,\n  \"count\": count(*[_type == \"blog\" && references(^._id)])\n}\n": BLOG_POSTS_CATEGORIESResult;
     "*[\n  _type == \"blog\"\n  && defined(slug.current)\n  && slug.current != $slug\n]|order(publishedAt desc)[0...$quantity]{\n...\n  publishedAt,\n  title,\n  mainImage,\n  slug,\n  author->{\n    name,\n    image,\n  },\n  categories[]->{\n    title,\n    \"slug\": slug.current,\n  }\n}": OTHERS_BLOG_QUERYResult;
   }
 }
