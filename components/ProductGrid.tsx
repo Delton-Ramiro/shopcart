@@ -30,6 +30,7 @@ export const ProductGrid = () => {
       }
     };
     fetchData();
+    // eslint-disable-next-line
   }, [selectedTab]);
   return (
     <div>

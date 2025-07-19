@@ -66,6 +66,7 @@ const Shop = ({ categories, brands }: Props) => {
 
   useEffect(() => {
     fetchProducts();
+    // eslint-disable-next-line
   }, [selectedCategory, selectedBrand, selectedPrice]);
   return (
     <div className="border-t">
